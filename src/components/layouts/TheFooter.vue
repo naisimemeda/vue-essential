@@ -1,69 +1,72 @@
 <template>
-  <footer class="footer">
-    <div class="container">
-      <div class="row footer-top">
-        <div class="col-sm-5 col-lg-5">
-          <p class="padding-top-xsm">{{ description }}</p>
+<footer class="footer">
+  <div class="container">
+    <div class="row footer-top">
+      <div class="col-sm-5 col-lg-5">
+        <p class="padding-top-xsm">{{ description }}</p>
 
-          <div class="text-md">
-            <a v-for="item in contacts" :title="item.title" :href="item.link" :style="contactStyle" target="_blank">
-              <i :class="`fa fa-${item.icon}`"></i>
-            </a>
-          </div>
-
-          <br>
-
-          <span v-html="designer"></span>
+        <div class="text-md">
+          <a v-for="item in contacts" v-title="item.title" :href="item.link" :style="contactStyle" target="_blank">
+            <i :class="`fa fa-${item.icon}`"></i>
+          </a>
         </div>
 
-        <div class="col-sm-6 col-lg-6 col-lg-offset-1">
-          <div class="row">
-            <div class="col-sm-4">
-              <h4>{{ sponsor.title }}</h4>
+        <br>
 
-              <ul class="list-unstyled">
-                <li v-for="item in sponsor.list">
-                  <a :href="item.link" target="_blank">
-                    <img :title="item.title" :src="item.logo" :alt="item.title" class="footer-sponsor-link" width="98">
-                  </a>
-                </li>
-              </ul>
-            </div>
+        <span v-html="designer"></span>
+      </div>
 
-            <div class="col-sm-4">
-              <h4>{{ statistics.title }}</h4>
+      <div class="col-sm-6 col-lg-6 col-lg-offset-1">
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>{{ sponsor.title }}</h4>
 
-              <ul class="list-unstyled">
-                <li v-for="item in statistics.list">{{ item.title }}: {{ item.description }}</li>
-              </ul>
-            </div>
+            <ul class="list-unstyled">
+              <li v-for="item in sponsor.list">
+                <a :href="item.link" target="_blank">
+                  <img v-title="item.title" :src="item.logo" :alt="item.title" class="footer-sponsor-link" width="98">
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            <div class="col-sm-4">
-              <h4>{{ other.title }}</h4>
+          <div class="col-sm-4">
+            <h4>{{ statistics.title }}</h4>
 
-              <ul class="list-unstyled">
-                <li v-for="item in other.list">
-                  <a :href="item.link" :title="item.title" target="_blank">
-                    <i :class="`fa fa-${item.icon}`"></i> {{ item.title }}
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ul class="list-unstyled">
+              <li v-for="item in statistics.list">{{ item.title }}: {{ item.description }}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4">
+            <h4>{{ other.title }}</h4>
+
+            <ul class="list-unstyled">
+              <li v-for="item in other.list">
+                <a :href="item.link" :title="item.title" target="_blank">
+                  <i :class="`fa fa-${item.icon}`"></i> {{ item.title }}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 </template>
 
 <script>
+import title from '@/directives/title'
 export default {
   name: 'TheFooter',
+  directives: {
+    title
+  },
   data() {
     return {
       description: '这是一个 Vue 构建的社区',
-      contacts: [
-        {
+      contacts: [{
           icon: 'envelope',
           title: '反馈问题',
           link: '2514430140@qq.com'
@@ -90,8 +93,7 @@ export default {
       `,
       sponsor: {
         title: '推荐好用的服务',
-        list: [
-          {
+        list: [{
             logo: 'https://lccdn.phphub.org/uploads/banners/bQawWl3vT5dc2lYx5JZ7.png',
             title: '本站服务器由 UCloud 赞助',
             link: 'http://www.ucloud.cn/?utm_source=zanzhu&utm_campaign=phphub&utm_medium=display&utm_content=yejiao&ytag=phphubyejiao'
@@ -115,8 +117,7 @@ export default {
       },
       statistics: {
         title: '统计信息',
-        list: [
-          {
+        list: [{
             title: '社区会员',
             description: '22889'
           },
@@ -132,8 +133,7 @@ export default {
       },
       other: {
         title: '其他信息',
-        list: [
-          {
+        list: [{
             icon: 'thumbs-up',
             title: '加我QQ:2514430140',
             link: ''
@@ -151,5 +151,9 @@ export default {
 </script>
 
 <style scoped>
-a:hover, a:focus { color: #e27575; transition: color .15s;}
+a:hover,
+a:focus {
+  color: #e27575;
+  transition: color .15s;
+}
 </style>

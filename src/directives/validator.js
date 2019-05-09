@@ -1,3 +1,26 @@
+/*
+寻找遍历到的第一个class
+document.querySelector('.class')
+
+找到父类
+el.parentElement
+
+dom里面加html结构
+const fragment = document.createRange().createContextualFragment("<h1>sss</h1>")
+父里面插入子节点
+appendChild(fragment)
+
+'input' 要监听的事件   defaultHandler 要执行的函数
+addEventListener('input', defaultHandler, false)
+removeEventListener('input', defaultHandler, false)
+
+添加删除class
+classList.add('has-error')
+classList.remove('has-error')
+*/
+
+
+
 function validate(el, modifiers, bindingValue) {
   bindingValue = bindingValue && typeof bindingValue === 'object' ? bindingValue : {}
   const value = typeof el.value === 'string' ? el.value.trim() : ''

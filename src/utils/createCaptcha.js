@@ -16,4 +16,4 @@ export default function(num = 6, letters = 'QWERTYUIOPLKJHGFDSAZXCVBNM1234567890
     tpl,
     captcha
   }
-} 
+}

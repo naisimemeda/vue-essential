@@ -1,10 +1,3 @@
-/*
-JSON.stringify 转json
-JSON.parse    json转对象
-
-*/
-
-
 const ls = localStorage
 
 export default {

@@ -34,7 +34,6 @@ export default [
         component: () => import('@/views/users/Avatar.vue'),
         meta: { auth: true }
       },
-      // EditPassword
       {
         path: '/users/1/edit_password',
         name: 'EditPassword',
@@ -42,5 +41,17 @@ export default [
         meta: { auth: true }
       }
     ]
+  },
+  {
+    path: '/articles/create',
+    name: 'Create',
+    component: () => import('@/views/articles/Create'),
+    meta: { auth: true }
+  },
+  // Content
+  {
+    path: '/articles/:articleId/content',
+    name: 'Content',
+    component: () => import('@/views/articles/Content.vue')
   },
 ]

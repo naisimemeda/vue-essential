@@ -1,6 +1,6 @@
 # vuejs-essential
 
-> A Vue.js project
+> vue练习项目
 
 ## Build Setup
 

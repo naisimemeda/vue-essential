@@ -6,6 +6,7 @@
           <h1 class="text-center">{{ title }}</h1>
           <div class="article-meta text-center">
             <i class="fa fa-clock-o"></i>
+            <abbr>{{ date | moment('from') }}</abbr>
           </div>
           <div class="entry-content">
             <div class="content-body entry-content panel-body ">
@@ -19,33 +20,38 @@
 </template>
 
 <script>
-import SimpleMDE from 'simplemde'
+  import SimpleMDE from 'simplemde'
+  import hljs from 'highlight.js'
+  import emoji from 'node-emoji'
 
-export default {
-  name: 'Content',
-  data() {
-    return {
-      title: '', // 文章标题
-      content: '' // 文章内容
-    }
-  },
-  created() {
-    const articleId = this.$route.params.articleId
-    const article = this.$store.getters.getArticleById(articleId)
+  export default {
+    name: 'Content',
+    data() {
+      return {
+        title: '', // 文章标题
+        content: '', // 文章内容
+        date: '' // 创建时间
+      }
+    },
+    created() {
+      const articleId = this.$route.params.articleId
+      const article = this.$store.getters.getArticleById(articleId)
 
-    if (article) {
-      let { title, content } = article
+      if (article) {
+        let { title, content, date } = article
 
-      this.title = title
-      this.content = SimpleMDE.prototype.markdown(content)
+        this.title = title
+        this.content = SimpleMDE.prototype.markdown(emoji.emojify(content, name => name))
+        this.date = date
 
-      this.$nextTick(() => {
-        this.$el.querySelectorAll('pre code').forEach((el) => {
+        this.$nextTick(() => {
+          this.$el.querySelectorAll('pre code').forEach((el) => {
+            hljs.highlightBlock(el)
+          })
         })
-      })
+      }
     }
   }
-}
 </script>
 
 <style scoped>

@@ -24,79 +24,76 @@
 </template>
 
 <script>
-import SimpleMDE from 'simplemde'
-import ls from '@/utils/localStorage'
+  import SimpleMDE from 'simplemde'
+  import hljs from 'highlight.js'
+  import ls from '@/utils/localStorage'
 
+  window.hljs = hljs
 
-export default {
-  name: 'Create',
-  data() {
-    return {
-      title: '', // 文章标题
-      content: '' // 文章内容
-    }
-  },
-  mounted() {
-    const simplemde = new SimpleMDE({
-      element: document.querySelector('#editor'),
-      placeholder: '请使用 Markdown 格式书写 ;-)，代码片段黏贴时请注意使用高亮语法。',
-      spellChecker: false,
-      autoDownloadFontAwesome: false,
-      autosave: {
-        enabled: true,
-        uniqueId: 'vuejs-essential'
+  export default {
+    name: 'Create',
+    data() {
+      return {
+        title: '', // 文章标题
+        content: '' // 文章内容
+      }
+    },
+    mounted() {
+      const simplemde = new SimpleMDE({
+        element: document.querySelector('#editor'),
+        placeholder: '请使用 Markdown 格式书写 ;-)，代码片段黏贴时请注意使用高亮语法。',
+        spellChecker: false,
+        autoDownloadFontAwesome: false,
+        autosave: {
+          enabled: true,
+          uniqueId: 'vuejs-essential'
+        },
+        renderingConfig: {
+          codeSyntaxHighlighting: true
+        }
+      })
+
+      simplemde.codemirror.on('change', () => {
+        this.content = simplemde.value()
+      })
+
+      this.simplemde = simplemde
+      this.fillContent()
+    },
+    methods: {
+      saveTitle() {
+        ls.setItem('smde_title', this.title)
       },
-      renderingConfig: {
-        codeSyntaxHighlighting: true
-      }
-    })
+      fillContent() {
+        const simplemde = this.simplemde
+        const title = ls.getItem('smde_title')
 
-    simplemde.codemirror.on('change', () => {
-      this.content = simplemde.value()
-    })
-
-    this.simplemde = simplemde
-    this.fillContent()
-  },
-  methods: {
-    saveTitle() {
-      ls.setItem('smde_title', this.title)
-    },
-    fillContent() {
-      const simplemde = this.simplemde
-      const title = ls.getItem('smde_title')
-
-      if (title !== null) {
-        this.title = title
-      }
-
-      this.content = simplemde.value()
-    },
-    post() {
-      const title = this.title
-      const content = this.content
-
-      if (title !== '' && content.trim() !== '') {
-        const article = {
-          title,
-          content
+        if (title !== null) {
+          this.title = title
         }
 
-        this.$store.dispatch('post', { article })
-        this.clearData()
+        this.content = simplemde.value()
+      },
+      post() {
+        const title = this.title
+        const content = this.content
+
+        if (title !== '' && content.trim() !== '') {
+          const article = {
+            title,
+            content
+          }
+
+          this.$store.dispatch('post', { article })
+          this.clearData()
+        }
+      },
+      clearData() {
+        this.title = ''
+        ls.removeItem('smde_title')
+        this.simplemde.value('')
+        this.simplemde.clearAutosavedValue()
       }
-    },
-    clearData() {
-      this.title = ''
-      ls.removeItem('smde_title')
-      this.simplemde.value('')
-      this.simplemde.clearAutosavedValue()
     }
   }
-}
 </script>
-
-<style scoped>
-.blog-container { max-width: 980px; margin: 0 auto; margin-top: 20px;}
-textarea { height: 200px; }
-</style>

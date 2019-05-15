@@ -7,9 +7,9 @@ Vue.use(Vuex)
 
 const state = {
   user: ls.getItem('user'),
-  // 添加 auth 来保存当前用户的登录状态
   auth: ls.getItem('auth'),
-  articles: ls.getItem('articles'),
+  // 所有文章状态
+  articles: ls.getItem('articles')
 }
 
 const mutations = {
@@ -25,39 +25,24 @@ const mutations = {
   UPDATE_ARTICLES(state, articles) {
     state.articles = articles
     ls.setItem('articles', articles)
-  },
+  }
 }
 
 const actions = {
-  login({
-    commit
-  }, user) {
+  login({ commit }, user) {
     if (user) commit('UPDATE_USER', user)
     commit('UPDATE_AUTH', true)
     router.push('/')
   },
-  logout({
-    commit
-  }) {
+  logout({ commit }) {
     commit('UPDATE_AUTH', false)
-    router.push({
-      name: 'Home',
-      params: {
-        logout: true
-      }
-    })
+    router.push({ name: 'Home', params: { logout: true } })
   },
-  updateUser({
-    state,
-    commit
-  }, user) {
+  updateUser({ state, commit }, user) {
     const stateUser = state.user
 
     if (stateUser && typeof stateUser === 'object') {
-      user = {
-        ...stateUser,
-        ...user
-      }
+      user = { ...stateUser, ...user }
     }
 
     commit('UPDATE_USER', user)
@@ -84,7 +69,7 @@ const store = new Vuex.Store({
   state,
   mutations,
   actions,
-  getters,
+  getters
 })
 
 export default store

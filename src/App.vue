@@ -36,9 +36,11 @@ $link-color: #12c4c5;
 $link-hover-color: #22ddde;
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $fa-font-path: "~font-awesome/fonts/";
-@import 'simplemde/dist/simplemde.min.css';
+
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "~font-awesome/scss/font-awesome";
 @import "./styles/main";
 @import "./styles/extra";
+@import 'simplemde/dist/simplemde.min.css';
+@import 'highlight.js/styles/paraiso-dark.css';
 </style>

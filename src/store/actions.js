@@ -1,22 +1,13 @@
 import router from '../router'
 
-export const post = ({
-  commit,
-state
-}, {
-  article,
-  articleId
-}) => {
+export const post = ({ commit, state }, { article, articleId }) => {
   let articles = state.articles
 
   if (!Array.isArray(articles)) articles = []
 
   if (article) {
     const uid = 1
-    const {
-      title,
-      content
-    } = article
+    const { title, content } = article
     const date = new Date()
 
     if (articleId === undefined) {
@@ -38,12 +29,6 @@ state
     }
 
     commit('UPDATE_ARTICLES', articles)
-    router.push({
-      name: 'Content',
-      params: {
-        articleId,
-        showMsg: true
-      }
-    })
+    router.push({ name: 'Content', params: { articleId, showMsg: true } })
   }
 }

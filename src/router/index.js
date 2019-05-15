@@ -23,10 +23,10 @@ router.beforeEach((to, from, next) => {
   app.$message.hide()
 
   if (
-    (auth && to.path.indexOf('/auth/') !== -1) ||
-    (!auth && to.meta.auth) ||
-    // 有 articleId 且不能找到与其对应的文章时，跳转到首页
-    (articleId && !store.getters.getArticleById(articleId))
+      (auth && to.path.indexOf('/auth/') !== -1) ||
+      (!auth && to.meta.auth) ||
+      // 有 articleId 且不能找到与其对应的文章时，跳转到首页
+      (articleId && !store.getters.getArticleById(articleId))
   ) {
     next('/')
   } else {

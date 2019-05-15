@@ -1,5 +1,3 @@
-import router from '../router'
-
 export const post = ({ commit, state }, { article, articleId }) => {
   let articles = state.articles
 
@@ -26,9 +24,27 @@ export const post = ({ commit, state }, { article, articleId }) => {
         content,
         date
       })
+    } else {
+      for (let article of articles) {
+        if (parseInt(article.articleId) === parseInt(articleId)) {
+          article.title = title
+          article.content = content
+          break
+        }
+      }
     }
 
     commit('UPDATE_ARTICLES', articles)
     router.push({ name: 'Content', params: { articleId, showMsg: true } })
+  } else {
+    for (let article of articles) {
+      if (parseInt(article.articleId) === parseInt(articleId)) {
+        articles.splice(articles.indexOf(article), 1)
+        break
+      }
+    }
+
+    commit('UPDATE_ARTICLES', articles)
+    router.push({ name: 'Home', params: { showMsg: true } })
   }
 }

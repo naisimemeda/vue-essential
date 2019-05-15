@@ -68,22 +68,22 @@ export default {
   },
   data() {
     return {
-      description: 'VuejsCaff 是一个 Vue.js 的知识社区',
+      description: 'VuejsCaff  Vue.js 社区',
       contacts: [
         {
           icon: 'envelope',
-          title: '反馈问题',
-          link: 'mailto:summer@yousails.com'
+          title: '反馈问题 : 2514430140@qq.com',
+          link: '2514430140@qq.com'
         },
         {
           icon: 'weibo',
           title: '站长微博',
-          link: 'https://weibo.com/1837553744/profile?topnav=1&wvr=6'
+          link: ''
         },
         {
           icon: 'weixin',
-          title: '加我微信',
-          link: 'https://vuejscaff.com/contact'
+          title: '加我微信:xwydbjry',
+          link: ''
         }
       ],
       contactStyle: {
@@ -92,30 +92,25 @@ export default {
       designer: `
         <span style="font-size:0.9em">Designed by
           <span style="color: #e27575;font-size: 14px;">❤</span>
-          <a href="https://github.com/summerblue"target="_blank"style="color:inherit">Summer</a>
+          <a href="https://github.com/naisimemeda"target="_blank"style="color:inherit">Nice</a>
         </span>
       `,
       sponsor: {
-        title: '赞助商',
+        title: '推荐应用',
         list: [
           {
             logo: 'https://lccdn.phphub.org/uploads/banners/bQawWl3vT5dc2lYx5JZ7.png',
-            title: '本站服务器由 UCloud 赞助',
+            title: 'UCloud',
             link: 'http://www.ucloud.cn/?utm_source=zanzhu&utm_campaign=phphub&utm_medium=display&utm_content=yejiao&ytag=phphubyejiao'
           },
           {
             logo: 'https://lccdn.phphub.org/uploads/banners/yGLIR0idW7zsInjsNmzr.png',
-            title: '本站 CDN 服务由七牛赞助',
+            title: 'CDN 七牛',
             link: 'http://www.qiniu.com/?utm_source=phphub'
           },
           {
-            logo: 'https://lccdn.phphub.org/uploads/banners/XPtLlZmIN1cQbLuDFEON.png',
-            title: 'Composer 镜像赞助商',
-            link: 'https://www.upyun.com/'
-          },
-          {
             logo: 'https://lccdn.phphub.org/uploads/banners/JpTCK6OKYBIrBIWdtob8.png',
-            title: '订阅邮件赞助商：SendCloud',
+            title: '订阅邮件',
             link: 'http://www.sendcloud.net/'
           }
         ]
@@ -142,13 +137,13 @@ export default {
         list: [
           {
             icon: 'thumbs-up',
-            title: '软件外包服务',
-            link: 'https://vuejscaff.com/contact'
+            title: 'QQ:2514430140',
+            link: ''
           },
           {
             icon: 'globe',
-            title: '推荐网站',
-            link: 'https://vuejscaff.com/sites'
+            title: 'VX:xwydbjry',
+            link: ''
           }
         ]
       }

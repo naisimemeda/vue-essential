@@ -20,7 +20,7 @@ router.beforeEach((to, from, next) => {
   // 获取目标页面路由参数里的 articleId
   const articleId = to.params.articleId
 
-  app.$message.hide()
+  app.$message.hide() 
 
   if (
       (auth && to.path.indexOf('/auth/') !== -1) ||

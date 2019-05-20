@@ -1,3 +1,5 @@
+import router from '../router'
+
 export const post = ({ commit, state }, { article, articleId }) => {
   let articles = state.articles
 
@@ -27,8 +29,7 @@ export const post = ({ commit, state }, { article, articleId }) => {
     } else {
       for (let article of articles) {
         if (parseInt(article.articleId) === parseInt(articleId)) {
-          article.title = title
-          article.content = content
+          article = { ...article, ...{ title, content } }
           break
         }
       }
@@ -49,6 +50,7 @@ export const post = ({ commit, state }, { article, articleId }) => {
   }
 }
 
+// 参数 articleId 是文章 ID；isAdd 为 true 时点赞，为 false 时取消赞
 export const like = ({ commit, state }, { articleId, isAdd }) => {
   // 仓库的文章
   let articles = state.articles
@@ -96,7 +98,7 @@ export const like = ({ commit, state }, { articleId, isAdd }) => {
   return likeUsers
 }
 
-
+// 参数 articleId 是文章 ID；comment 是评论内容；commentId 是评论 ID
 export const comment = ({ commit, state }, { articleId, comment, commentId }) => {
   let articles = state.articles
   let comments = []

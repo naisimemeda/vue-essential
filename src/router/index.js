@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 引入 ./routes.js 的默认值
 import routes from './routes'
 
 Vue.use(Router)
@@ -14,13 +13,14 @@ const router =  new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  window.document.scrollTop = 0
   const app = router.app
   const store = app.$options.store
   const auth = store.state.auth
   // 获取目标页面路由参数里的 articleId
   const articleId = to.params.articleId
 
-  app.$message.hide() 
+  app.$message.hide()
 
   if (
       (auth && to.path.indexOf('/auth/') !== -1) ||

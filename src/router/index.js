@@ -13,7 +13,7 @@ const router =  new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  window.document.scrollTop = 0
+  document.documentElement.scrollTop = 0
   const app = router.app
   const store = app.$options.store
   const auth = store.state.auth
@@ -25,7 +25,6 @@ router.beforeEach((to, from, next) => {
   if (
       (auth && to.path.indexOf('/auth/') !== -1) ||
       (!auth && to.meta.auth) ||
-      // 有 articleId 且不能找到与其对应的文章时，跳转到首页
       (articleId && !store.getters.getArticleById(articleId))
   ) {
     next('/')

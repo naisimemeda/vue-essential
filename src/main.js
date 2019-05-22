@@ -9,10 +9,14 @@ import Message from './plugins/message'
 import './filters'
 import { mockArticles } from './mock/data'
 import ls from './utils/localStorage'
+import './mock'
+import axios from 'axios'
 
 Vue.use(VueSweetalert2)
 // 使用插件
 Vue.use(Message)
+
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 

@@ -34,7 +34,7 @@
         <div class="user-lists">
           <span v-for="likeUser in likeUsers">
             <!-- 点赞用户是当前用户时，加上类 animated 和 swing 以显示一个特别的动画  -->
-            <router-link :to="`/${likeUser.uname}`" :src="likeUser.uavatar" tag="img" class="img-thumbnail avatar avatar-middle" :class="{ 'animated swing' : likeUser.uid === 1 }"></router-link> 
+            <router-link :to="`/${likeUser.uname}`" :src="likeUser.uavatar" tag="img" class="img-thumbnail avatar avatar-middle" :class="{ 'animated swing' : likeUser.uid === 1 }"></router-link>
           </span>
         </div>
         <div v-if="!likeUsers.length" class="vote-hint">成为第一个点赞的人吧 😄</div>
@@ -48,11 +48,11 @@
       <img :src="user.avatar" class="img-thumbnail avatar" width="48">
     </div>
     <div>
-      <p class="text-md">如果你想学习更多前端的知识，VuejsCaff.com 是个不错的开始</p>
+      <p class="text-md">欢饮关注我的 github</p>
       <div class="payment-qrcode inline-block">
-        <h5>扫一扫打开 VuejsCaff.com</h5>
+        <h5>扫一扫进入我的 github</h5>
         <p>
-          <qrcode-vue value="https://vuejscaff.com/" :size="160"></qrcode-vue>
+          <qrcode-vue value="https://github.com/naisimemeda" :size="160"></qrcode-vue>
         </p>
       </div>
     </div>
